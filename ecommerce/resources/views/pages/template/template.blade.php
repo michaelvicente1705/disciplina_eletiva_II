@@ -9,12 +9,12 @@
     <!-- Fonts -->
 
     <!-- Styles -->
-    <style>
+    <link href="https://unpkg.com/tailwindcss@0.3.0/dist/tailwind.min.css" rel="stylesheet">
 
-    </style>
+   <link href="{{ asset('css/app.css') }}" rel="stylesheet"> 
 </head>
 <body >
-
+  @yield('body')
 </div>
 </body>
 </html>
