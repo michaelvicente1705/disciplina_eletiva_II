@@ -14,12 +14,12 @@
         <div class="row">
             <div class="col ">
 
-                <input type="number" class="form-control" id="n2" name="n2">
+                <input type="number" class="form-control" id="n2" name="n2" required>
                 <label for="n2">Valor do produto</label>
             </div>
             <div class="col">
 
-                <input type="number" class="form-control" id="n1" name="n1">
+                <input type="number" class="form-control" id="n1" name="n1" required >
                 <label for="n1">Valor pago</label>
 
             </div>

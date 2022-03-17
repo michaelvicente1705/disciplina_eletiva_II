@@ -17,21 +17,21 @@
 
             <div class="col-3">
                 <label for="n1">Nota 1</label>
-                <input type="text" class="form-control" id="n1" name="n1">
+                <input type="number" class="form-control " id="n1" name="n1" required>
             </div>
             <div class="col-3">
                 <label for="n2">Nota 2</label>
-                <input type="text" class="form-control" id="n2" name="n2">
+                <input type="number" class="form-control " id="n2" name="n2" required >
             </div>
         </div>
         <div class="row">
             <div class="col-3">
                 <label for="n3">Nota 3</label>
-                <input type="text" class="form-control" id="n3" name="n3">
+                <input type="number" class="form-control " id="n3" name="n3"  required>
             </div>
             <div class="col-3">
                 <label for="n4">Nota 4</label>
-                <input type="text" class="form-control" id="n4" name="n4">
+                <input type="number" class="form-control " id="n4" name="n4" required>
             </div>
         </div>
         <br>

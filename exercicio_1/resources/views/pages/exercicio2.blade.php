@@ -16,13 +16,13 @@
 
                 <div class="col">
 
-                    <input type="number" class="form-control" id="kg" name="kg">
+                    <input type="number" class="form-control" id="kg" name="kg" required>
                     <label for="kg">Valor do quilo</label>
                 </div>
 
                 <div class="col">
 
-                    <input type="number" class="form-control"  id="qnt" name="qnt">
+                    <input type="number" class="form-control"  id="qnt" name="qnt" required>
                     <label for="qnt">Quantidade de quilos:</label>
                 </div>
 

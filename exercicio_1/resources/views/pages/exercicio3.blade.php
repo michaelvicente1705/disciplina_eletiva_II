@@ -16,7 +16,7 @@
 
                 <div class="col-4">
                     <label for="value">Insira um valor</label>
-                    <input type="text" class="form-control" id="value" name="value">
+                    <input type="number" class="form-control" id="value" name="value" required>
                 </div>
                 <div class="col-1">
                     <br>
