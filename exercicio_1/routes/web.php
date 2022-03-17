@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Exercicio1Controller;
+use App\Http\Controllers\ExerciciosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +15,12 @@ use App\Http\Controllers\Exercicio1Controller;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/ex1', [Exercicio1Controller::class, 'index']);
-Route::get('/ex1/calc/', [Exercicio1Controller::class, 'calcular']);
 
+//Ex1
+Route::get('/ex1', [ExerciciosController::class, 'indexEx1']);
+Route::get('/ex1/calc/', [ExerciciosController::class, 'calcularEx1']);
+
+//Ex2
+Route::get('/ex2', [ExerciciosController::class, 'indexEx2']);
+Route::get('/ex2/calc/', [ExerciciosController::class, 'calcularEx2']);
 
