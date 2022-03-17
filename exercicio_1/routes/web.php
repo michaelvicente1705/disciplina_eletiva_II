@@ -18,9 +18,17 @@ Route::get('/', [HomeController::class, 'index']);
 
 //Ex1
 Route::get('/ex1', [ExerciciosController::class, 'indexEx1']);
-Route::get('/ex1/calc/', [ExerciciosController::class, 'calcularEx1']);
+Route::post('/ex1/calc/', [ExerciciosController::class, 'calcularEx1']);
 
 //Ex2
 Route::get('/ex2', [ExerciciosController::class, 'indexEx2']);
-Route::get('/ex2/calc/', [ExerciciosController::class, 'calcularEx2']);
+Route::post('/ex2/calc/', [ExerciciosController::class, 'calcularEx2']);
 
+//Ex3
+Route::get('/ex3', [ExerciciosController::class, 'indexEx3']);
+Route::post('/ex3/calc/', [ExerciciosController::class, 'calcularEx3']);
+
+
+//Ex3
+Route::get('/ex4', [ExerciciosController::class, 'indexEx4']);
+Route::post('/ex4/calc/', [ExerciciosController::class, 'calcularEx4']);

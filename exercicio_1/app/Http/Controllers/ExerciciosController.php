@@ -47,7 +47,49 @@ class ExerciciosController extends Controller
         $resultado = $qnt * $kg;
 
         if($resultado>0){
-            return "O valor a ser pago é R$ ". $resultado;
+            $result = "O valor a ser pago é R$ ". $resultado;
+            return view('pages.exercicio2', compact('result'));
+        }
+
+    }
+
+    public function indexEx3()
+    {
+        return view("pages.exercicio3");
+    }
+
+    public function calcularEx3(Request $request)
+    {
+        $valor=$request->value;
+        if($valor>10) {
+            $result = "O valor é maior que 10";
+            return view('pages.exercicio3', compact('result'));
+        }elseif ($valor<10) {
+            $result = "O valor é menor que 10";
+            return view('pages.exercicio3', compact('result'));
+        }else {
+            $result = "o valor é 10";
+            return view('pages.exercicio3', compact('result'));
+        }
+    }
+
+    public function indexEx4()
+    {
+        return view("pages.exercicio3");
+    }
+
+    public function calcularEx4(Request $request)
+    {
+        $valor=$request->value;
+        if($valor>0) {
+            $result = "O valor é positivo";
+            return view('pages.exercicio3', compact('result'));
+        }elseif ($valor<0) {
+            $result = "O valor é negativo";
+            return view('pages.exercicio3', compact('result'));
+        }else {
+            $result = "o valor é igual a zero";
+            return view('pages.exercicio3', compact('result'));
         }
 
     }
