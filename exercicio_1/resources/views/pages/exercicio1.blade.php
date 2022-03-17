@@ -30,6 +30,10 @@
     </form>
     <br>
     <?php
+        if(isset($message)){
+
+            echo "<h1>".$message."</h1>";
+        }
         if(isset($def)){
             echo $def;
         }

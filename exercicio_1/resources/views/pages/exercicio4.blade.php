@@ -27,6 +27,7 @@
         </form>
         <br>
         <?php
+
         if(isset($result)){
             echo $result;
         }
