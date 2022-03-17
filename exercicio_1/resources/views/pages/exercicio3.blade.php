@@ -16,10 +16,11 @@
 
                 <div class="col-4">
                     <label for="value">Insira um valor</label>
-                    <input type="text" id="value" name="value">
+                    <input type="text" class="form-control" id="value" name="value">
                 </div>
                 <div class="col-1">
-                    <button>Calcular</button>
+                    <br>
+                    <button class="btn btn-primary">Calcular</button>
                 </div>
 
             </div>

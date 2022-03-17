@@ -15,17 +15,20 @@
             <div class="row">
 
                 <div class="col">
+
+                    <input type="number" class="form-control" id="kg" name="kg">
                     <label for="kg">Valor do quilo</label>
-                    <input type="number" id="kg" name="kg">
                 </div>
 
                 <div class="col">
+
+                    <input type="number" class="form-control"  id="qnt" name="qnt">
                     <label for="qnt">Quantidade de quilos:</label>
-                    <input type="number" id="qnt" name="qnt">
                 </div>
 
                 <div class="col">
-                    <button>Calcular</button>
+
+                    <button class="btn btn-primary" >Calcular</button>
                 </div>
 
             </div>

@@ -29,6 +29,10 @@ Route::get('/ex3', [ExerciciosController::class, 'indexEx3']);
 Route::post('/ex3/calc/', [ExerciciosController::class, 'calcularEx3']);
 
 
-//Ex3
+//Ex4
 Route::get('/ex4', [ExerciciosController::class, 'indexEx4']);
 Route::post('/ex4/calc/', [ExerciciosController::class, 'calcularEx4']);
+
+//Ex5
+Route::get('/ex5', [ExerciciosController::class, 'indexEx5']);
+Route::post('/ex5/calc/', [ExerciciosController::class, 'calcularEx5']);

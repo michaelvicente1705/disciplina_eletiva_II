@@ -12,17 +12,19 @@
     <form action="/ex1/calc/" method="post">
         @csrf
         <div class="row">
-            <div class="col">
+            <div class="col ">
+
+                <input type="number" class="form-control" id="n2" name="n2">
                 <label for="n2">Valor do produto</label>
-                <input type="number" id="n2" name="n2">
             </div>
             <div class="col">
-                <label for="n1">Valor pago:</label>
-                <input type="number" id="n1" name="n1">
+
+                <input type="number" class="form-control" id="n1" name="n1">
+                <label for="n1">Valor pago</label>
 
             </div>
             <div class="col">
-                <button>Calcular</button>
+                <button class="btn btn-primary" >Calcular</button>
             </div>
         </div>
     </form>

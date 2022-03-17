@@ -75,21 +75,45 @@ class ExerciciosController extends Controller
 
     public function indexEx4()
     {
-        return view("pages.exercicio3");
+        return view("pages.exercicio4");
     }
 
     public function calcularEx4(Request $request)
     {
         $valor=$request->value;
         if($valor>0) {
-            $result = "O valor é positivo";
-            return view('pages.exercicio3', compact('result'));
+            $result = "Valor é positivo";
+            return view('pages.exercicio4', compact('result'));
         }elseif ($valor<0) {
-            $result = "O valor é negativo";
-            return view('pages.exercicio3', compact('result'));
+            $result = "Valor é negativo";
+            return view('pages.exercicio4', compact('result'));
         }else {
-            $result = "o valor é igual a zero";
-            return view('pages.exercicio3', compact('result'));
+            $result = "Valor é igual a zero";
+            return view('pages.exercicio4', compact('result'));
+        }
+
+    }
+
+    public function indexEx5()
+    {
+        return view("pages.exercicio5");
+    }
+
+    public function calcularEx5(Request $request)
+    {
+        $n1=$request->n1;
+        $n2=$request->n2;
+        $n3=$request->n3;
+        $n4=$request->n4;
+
+        $nfinal = ($n1+$n2+$n3+$n4)/4;
+
+        if($nfinal>7) {
+            $result = "Aprovado";
+            return view('pages.exercicio5', compact('result'));
+        }else {
+            $result = "Reprovado";
+            return view('pages.exercicio5', compact('result'));
         }
 
     }
