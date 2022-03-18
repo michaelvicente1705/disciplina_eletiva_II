@@ -39,8 +39,8 @@
 
                 echo "<h1>".$message."</h1>";
             }
-            if(isset($def)){
-                echo $def;
+            if(isset($result)){
+                echo $result;
             }
         ?>
     </div>
