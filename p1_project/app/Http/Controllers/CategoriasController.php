@@ -70,7 +70,7 @@ class CategoriasController extends Controller
     public function edit($id)
     {
         //
-        $categoria= Categoria::orderBy('descricao')->paginate(5);
+        $categoria = Categoria::findOrFail($id);
         return view('categoria.edit', compact('categoria') );
     }
 
@@ -110,5 +110,13 @@ class CategoriasController extends Controller
         } catch(\Exception $e){
             return redirect()->action([CategoriasController::class,'index'])->with('erro', 'Não foi possível excluir o registro!');
         }
+    }
+    public function search(Request $request){
+        $filtro = $request->query('filtro');
+        $pesquisa = $request->query('pesquisa');
+        $categoria = Categoria::where($filtro, 'like', '%'.$pesquisa.'%')->orderBy($filtro)->paginate(5);
+
+        return view('categoria.index',
+            compact('categoria','filtro','pesquisa'));
     }
 }

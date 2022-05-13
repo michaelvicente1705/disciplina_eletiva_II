@@ -28,10 +28,29 @@
                         <a class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300
                         hover:bg-green-700 hover:text-white focus:outline-none" href="{{route('produto.create')}}" > <i class="fas fa-plus"></i> Novo Produto</a>
                     </div>
+                        <div class="flex">
+                            <x-label for="filtro" :value="__('Filtrar por:')" />
+                        </div>
+                        <form action="{{route('produto.search')}}" method="get">
+                            <div class="flex">
+                                <select name="filtro" class="w-full rounded p-2" required>
+                                    <option value="nome">Nome</option>
 
+                                    <option value="descricao">Descrição</option>
+{{--                                    <option value="descricao">Categoria</option>--}}
+
+                                </select>
+                                <input name="pesquisa" class="w-full rounded p-2" type="text" placeholder="Informe a palavra-chave...">
+                                <button class="px-5 py-2 border-black border text-black rounded transition duration-300
+                                        hover:bg-black hover:text-white focus:outline-none" type="submit">Pesquisar</button>
+                            </div>
+                        </form>
                     <div>
                         <br>
                         <table class="table-auto min-w-full">
+                            <caption>
+                                {{ $produtos->appends(['filtro' => isset($filtro) ? $filtro : '', 'pesquisa' => isset($pesquisa) ? $pesquisa : ''])->links() }}
+                            </caption>
                             <thead>
                             <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-lg leading-4 text-black-500 tracking-wider">Nome</th>
                             <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-lg leading-4 text-black-500 tracking-wider">Ações</th>
@@ -41,12 +60,9 @@
                                 <tr>
                                     <td>{{$produto->nome}}</td>
                                     <td class="py-4">
-                                        <a class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300
-                                    hover:bg-blue-700 hover:text-white focus:outline-none" href="{{route('produto.edit', $produto->id)}}"><i class="far fa-edit"></i> Alterar</a>
-                                        <a class="px-5 py-2 border-yellow-500 border text-yellow-500 rounded transition duration-300
-                                    hover:bg-yellow-700 hover:text-white focus:outline-none" href="{{route('produto.show', $produto->id)}}" ><i class="far fa-eye"></i> Visualizar</a>
-                                        <a class="px-5 py-2 border-red-500 border text-red-500 rounded transition duration-300
-                                    hover:bg-red-700 hover:text-white focus:outline-none" href="{{ route('produtos.delete', $produto->id)}}" ><i class="far fa-trash-alt"></i> Excluir</a>
+                                        <a class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none" href="{{route('produto.edit', $produto->id)}}"><i class="far fa-edit"></i> Alterar</a>
+                                        <a class="px-5 py-2 border-yellow-500 border text-yellow-500 rounded transition duration-300 hover:bg-yellow-700 hover:text-white focus:outline-none" href="{{route('produto.show', $produto->id)}}" ><i class="far fa-eye"></i> Visualizar</a>
+                                        <a class="px-5 py-2 border-red-500 border text-red-500 rounded transition duration-300 hover:bg-red-700 hover:text-white focus:outline-none" href="{{ route('produtos.delete', $produto->id)}}" ><i class="far fa-trash-alt"></i> Excluir</a>
                                     </td>
                                 <tr>
                             @endforeach

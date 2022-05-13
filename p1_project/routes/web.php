@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\FornecedoresController;
 use App\Http\Controllers\ProdutosController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,23 +25,35 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::resources([
-  'categoria' => CategoriasController::class,
-  'produto' => ProdutosController::class,
+    'categoria' => CategoriasController::class,
+    'produto' => ProdutosController::class,
+    'fornecedor'=> FornecedoresController::class,
 ]);
+//Rotas complementares de Fornecedor
 
-//Rotas complementares de Categoria
+//delete
+Route::get('/fornecedor/{id}/delete',
+    [FornecedoresController::class, 'destroy'])
+    ->name('fornecedor.delete');
 
+Route::get('/categorias/search',
+    [CategoriasController::class, 'search'])
+    ->name('categoria.search');
+
+//delete
 Route::get('/categoria/{id}/delete',
     [CategoriasController::class, 'destroy'])
     ->name('categorias.delete');
 
 //Rotas complementares de Produto
 
+
+//pesquisa
 Route::get('/produtos/search',
     [ProdutosController::class, 'search'])
-    ->name('produtos.search');
+    ->name('produto.search');
 
-
+//delete
 Route::get('/produto/{id}/delete',
     [ProdutosController::class, 'destroy'])
     ->name('produtos.delete');

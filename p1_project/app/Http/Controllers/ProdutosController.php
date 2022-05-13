@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\Fornecedor;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,9 +32,9 @@ class ProdutosController extends Controller
     {
         //
 
-
+        $fornecedor= Fornecedor::all();
         $categoria= Categoria::all();
-        return view('produto.create', compact('categoria') );
+        return view('produto.create', compact('categoria', 'fornecedor') );
     }
 
     /**
@@ -48,7 +49,7 @@ class ProdutosController extends Controller
         try {
             $produto = new Produto();
             $dados = $request->only($produto->getFillable());
-            $produto = Produto::create($dados);
+            Produto::create($dados);
             return redirect()->action([ProdutosController::class, 'index'])->with('Sucesso', 'O produto foi cadastrado com sucesso');
         }
 
@@ -68,7 +69,8 @@ class ProdutosController extends Controller
         //
         $produto = Produto::findOrFail($id);
         $categoria= Categoria::findOrFail($produto->categorias_id);
-        return view('produto.show', compact('produto', 'categoria'));
+        $fornecedor= Fornecedor::findOrFail($produto->fornecedors_id);
+        return view('produto.show', compact('produto', 'categoria', 'fornecedor'));
     }
 
     /**
@@ -80,9 +82,14 @@ class ProdutosController extends Controller
     public function edit($id)
     {
         //
+        $fornecedor= Fornecedor::all();
+        $categoria= Categoria::all();
+
+        $categoriaAtual = Produto::findOrFail($id);
+        $fornecedorAtual = Produto::findOrFail($id);
 
         $produto = Produto::findOrFail($id);
-        return view('produto.edit', compact('produto'));
+        return view('produto.edit', compact('produto', 'categoria','fornecedor','fornecedorAtual','categoriaAtual'));
     }
 
     /**
@@ -123,11 +130,10 @@ class ProdutosController extends Controller
         }
     }
     public function search(Request $request){
-
         $filtro = $request->query('filtro');
         $pesquisa = $request->query('pesquisa');
         $produtos = Produto::where($filtro, 'like', '%'.$pesquisa.'%')->orderBy($filtro)->paginate(5);
 
-        return view('produto.index', compact('produtos'));
+        return view('produto.index', compact('produtos','filtro','pesquisa' ));
     }
 }

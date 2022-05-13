@@ -22,8 +22,13 @@ return new class extends Migration
             $table->float('valor');
             $table->string('descricao');
 
+
+            $table->unsignedBigInteger('fornecedors_id');
+            $table->foreign('fornecedors_id')->references('id')->on('fornecedors');
+
             $table->unsignedBigInteger('categorias_id');
             $table->foreign('categorias_id')->references('id')->on('categorias');
+
             $table->timestamps();
         });
 

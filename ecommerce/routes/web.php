@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
 use App\Http\Controllers\CategoriaController;
+=======
+
+>>>>>>> de93fb73d462b3086cb8bc266279df76860aa9e8
 /*
 |--------------------------------------------------------------------------
 | Web Routes

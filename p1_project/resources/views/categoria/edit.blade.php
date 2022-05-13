@@ -15,14 +15,15 @@
                             @method('PATCH')
                             <div class=" flex flex-wrap ">
 
-                                <div class="col p-4">
+                                <div class="col-md p-4">
                                     <div class="md:w-1/2">
-                                        <label for="nome">Nome da categoria</label>
+                                        <label for="nome">Categoria:</label>
+
                                     </div>
 
                                     <div class="md:w-1/2">
-                                        <x-input id="descricao" name="descricao" type="text" class="rounded-"
-                                                 value="{{$categoria->descricao}}"/>
+
+                                        <x-input id="descricao" name="descricao" type="text" class="rounded-" value="{{$categoria->descricao}}"/>
                                     </div>
                                 </div>
 

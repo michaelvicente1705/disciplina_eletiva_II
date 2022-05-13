@@ -16,7 +16,7 @@
                             <div class=" flex flex-wrap ">
                                 <div class="col p-4">
                                     <div class="md:w-1/2">
-                                        <label for="nome">Nome do Produto</label>
+                                        <label for="nome">Produto: </label>
                                     </div>
 
                                     <div class="md:w-1/2">
@@ -25,16 +25,39 @@
                                 </div>
                                 <div class="col  p-4">
                                     <div class="md:w-1/2">
-                                        <label for="valor">Valor da unidade</label>
+                                        <label for="valor">Valor:</label>
 
                                     </div>
                                     <div class="md:w-1/2">
-                                        <x-input id="valor"  name="valor" type="number"  value="{{ number_format($produto->valor, 2)}}" />
+                                        <x-input id="valor"  name="valor" type="number"  value="{{$produto->valor}}" placeholder="{{number_format($produto->valor,2)}}"/>
                                     </div>
                                 </div>
                                 <div class="col  p-4">
                                     <div class="md:w-1/2">
-                                        <label for="descricao" >Descrição</label>
+                                        <label for="valor">Categoria:</label>
+
+                                        <select name="categorias_id" class=" rounded "  required>
+                                            @foreach($categoria as $categoria)
+                                                <option value="{{$categoria->id}}">{{$categoria->descricao}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col  p-4">
+                                    <div class="md:w-1/2">
+                                        <label for="valor">Fornecedor:</label>
+
+                                        <select name="categorias_id" class=" rounded "  required>
+                                            @foreach($fornecedor as $fornecedor)
+                                                <option value="{{$fornecedor->id}}">{{$fornecedor->razao_social}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col  p-4">
+                                    <div class="md:w-1/2">
+                                        <label for="descricao" >Descrição:</label>
                                     </div>
                                     <div class="md:w-1/2">
                                         <x-input id="descricao"  name="descricao" type="text" value="{{$produto->descricao}}"/>

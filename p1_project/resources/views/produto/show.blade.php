@@ -14,6 +14,7 @@
                             <thead  class="auto">
                             <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-lg leading-4 text-black-500 tracking-wider"> <x-label :value="__('Nome')"/> </th>
                             <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-lg leading-4 text-black-500 tracking-wider"> <x-label :value="__('Categoria')"/> </th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-lg leading-4 text-black-500 tracking-wider"> <x-label :value="__('Fornecedor')"/> </th>
                             <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-lg leading-4 text-black-500 tracking-wider"> <x-label :value="__('Descrição')"/> </th>
                             <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-lg leading-4 text-black-500 tracking-wider"> <x-label :value="__('valor')"/> </th>
 
@@ -21,6 +22,7 @@
                             <tr class="auto">
                                 <td>{{$produto->nome}}</td>
                                 <td>{{$categoria->descricao}}</td>
+                                <td>{{$fornecedor->razao_social}}</td>
                                 <td> {{$produto->descricao}}</td>
                                 <td> R$ {{ number_format($produto->valor, 2)}}</td>
                             <tr>

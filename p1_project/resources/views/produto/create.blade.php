@@ -24,6 +24,16 @@
                                 @endforeach
                             </select>
                         </div>
+
+                        <div>
+                            <label for="categoria">Fornecedor</label>
+                            <select name="fornecedors_id" class="w-full rounded p-2"  required>
+                                @foreach($fornecedor as $fornecedor)
+                                    <option value="{{$fornecedor->id}}">{{$fornecedor->razao_social}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <div>
                             <x-label for="descricao" :value="__('Descrição')" />
                             <x-input id="descricao" class="block mt-1 w-full" type="text" name="descricao" required autofocus />
