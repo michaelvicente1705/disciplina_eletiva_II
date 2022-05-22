@@ -60,32 +60,33 @@ class RegisteredUserController extends Controller
 
     public function store(Request $request)
     {
-
-            $request->validate([
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'permission_id' => ['required','int'],
-                'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            ]);
-
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'permission_id' => ['required','int'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+        try{
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ]);
 
-           DB::table('permission_user')->insert([
-               'permission_id' => $request->permission_id,
-               'user_id'=>$user->id,
-           ]);
-
-
-
-           event(new Registered($user));
+            DB::table('permission_user')->insert([
+                'permission_id' => $request->permission_id,
+                'user_id'=>$user->id,
+            ]);
+            event(new Registered($user));
 
             //  Auth::login($user);  loga automaticamente no user criado
 
-           return redirect(RouteServiceProvider::HOME);
+            return redirect(RouteServiceProvider::HOME);
+        }
+        catch(\Exception $e){
+            return redirect()->action([RegisteredUserController::class, 'index'])->
+            with('erro', 'Não foi possível cadastrar o usuário!');
+        }
     }
 
     public function delete($id)

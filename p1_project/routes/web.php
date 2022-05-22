@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\FornecedoresController;
+use App\Http\Controllers\HomeCrontroller;
 use App\Http\Controllers\ProdutosController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeCrontroller::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

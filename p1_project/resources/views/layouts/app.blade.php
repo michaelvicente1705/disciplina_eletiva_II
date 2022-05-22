@@ -10,6 +10,7 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
         <script src="https://kit.fontawesome.com/d5a4aa7f97.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.3/dist/flowbite.min.css" />
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -33,5 +34,6 @@
                 {{ $slot }}
             </main>
         </div>
+        <script src="https://unpkg.com/flowbite@1.4.3/dist/flowbite.js"></script>
     </body>
 </html>

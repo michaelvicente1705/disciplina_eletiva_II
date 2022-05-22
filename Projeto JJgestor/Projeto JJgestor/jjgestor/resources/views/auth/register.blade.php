@@ -30,7 +30,8 @@
             <div class="mt-4">
 
                 <x-label for="permission_id" :value="__('Permissão')" />
-                <select name="permission_id" id="role">
+
+                <select name="permission_id" class="block mt-1 w-full" id="role">
                     <option value="1">Administrador</option>
                     <option value="2">Funcionário</option>
                     <option value="3">Cliente</option>
