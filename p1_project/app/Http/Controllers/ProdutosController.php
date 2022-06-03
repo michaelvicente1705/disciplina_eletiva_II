@@ -7,9 +7,13 @@ use App\Models\Fornecedor;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ProdutosController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,6 +22,7 @@ class ProdutosController extends Controller
     public function index()
     {
         //
+        Gate::authorize("administrador");
         $produtos = Produto::orderBy('nome')->paginate(5);
         $categorias = Categoria::orderBy('descricao');
         return view('produto.index', compact('produtos', 'categorias'));
@@ -31,7 +36,7 @@ class ProdutosController extends Controller
     public function create()
     {
         //
-
+        Gate::authorize("administrador");
         $fornecedor= Fornecedor::all();
         $categoria= Categoria::all();
         return view('produto.create', compact('categoria', 'fornecedor') );
@@ -46,10 +51,22 @@ class ProdutosController extends Controller
     public function store(Request $request)
     {
         //
+        Gate::authorize("administrador");
         try {
+
             $produto = new Produto();
             $dados = $request->only($produto->getFillable());
-            Produto::create($dados);
+            $produto = Produto::create($dados);
+
+            //image upload
+            $requestImage = $request->foto;
+            $extension = $requestImage->extension();
+            $imageName = $produto->id . '.' . $extension;
+            $produto->caminho_foto = $imageName;
+            $dados= $produto->only($produto->getFillable());
+            $requestImage->move(public_path('storage/produtos/'), $imageName);
+            Produto::whereId($produto->id)->update($dados);
+
             return redirect()->action([ProdutosController::class, 'index'])->with('Sucesso', 'O produto foi cadastrado com sucesso');
         }
 
@@ -67,6 +84,7 @@ class ProdutosController extends Controller
     public function show($id)
     {
         //
+        Gate::authorize("administrador");
         $produto = Produto::findOrFail($id);
         $categoria= Categoria::findOrFail($produto->categorias_id);
         $fornecedor= Fornecedor::findOrFail($produto->fornecedors_id);
@@ -82,6 +100,7 @@ class ProdutosController extends Controller
     public function edit($id)
     {
         //
+        Gate::authorize("administrador");
         $fornecedor= Fornecedor::all();
         $categoria= Categoria::all();
 
@@ -102,6 +121,7 @@ class ProdutosController extends Controller
     public function update(Request $request, $id)
     {
         //
+        Gate::authorize("administrador");
         try{
             $produto = new Produto();
             $dados = $request->only($produto->getFillable());
@@ -122,6 +142,7 @@ class ProdutosController extends Controller
     public function destroy($id)
     {
         //
+        Gate::authorize("administrador");
         try{
             Produto::destroy($id);
             return redirect()->action([ProdutosController::class, 'index'])->with('sucesso', 'O produto foi excluido com sucesso');
@@ -130,6 +151,7 @@ class ProdutosController extends Controller
         }
     }
     public function search(Request $request){
+        Gate::authorize("administrador");
         $filtro = $request->query('filtro');
         $pesquisa = $request->query('pesquisa');
         $produtos = Produto::where($filtro, 'like', '%'.$pesquisa.'%')->orderBy($filtro)->paginate(5);

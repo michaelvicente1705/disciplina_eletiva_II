@@ -64,14 +64,14 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
         try {
-            //image upload
+
             $produto = new Produto();
             $dados = $request->only($produto->getFillable());
             $produto = Produto::create($dados);
 
+            //image upload
             $requestImage = $request->foto;
             $extension = $requestImage->extension();
-
             $imageName = $produto->id . '.' . $extension;
             $produto->caminho_foto = $imageName;
             $dados= $produto->only($produto->getFillable());

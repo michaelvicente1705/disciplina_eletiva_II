@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\CompraController;
 use App\Http\Controllers\FornecedoresController;
 use App\Http\Controllers\HomeCrontroller;
 use App\Http\Controllers\ProdutosController;
@@ -19,9 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeCrontroller::class, 'index']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+
 
 Route::resources([
     'categoria' => CategoriasController::class,
@@ -56,6 +56,10 @@ Route::get('/produtos/search',
 Route::get('/produto/{id}/delete',
     [ProdutosController::class, 'destroy'])
     ->name('produtos.delete');
+
+Route::get('/dashboard', function () { return view('dashboard');})->name('dashboard');
+Route::get('/carrinho', [CompraController::class, 'compras'])->name('carrinho');
+Route::get('/cliente', [ClienteController::class, 'home'])->name('areacliente');
 
 
 require __DIR__.'/auth.php';

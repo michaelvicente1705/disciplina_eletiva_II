@@ -22,6 +22,7 @@ return new class extends Migration
             $table->float('valor');
             $table->string('descricao');
 
+            $table->string('caminho_foto')->nullable();
 
             $table->unsignedBigInteger('fornecedors_id');
             $table->foreign('fornecedors_id')->references('id')->on('fornecedors');

@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Estado;
 use App\Models\Fornecedor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class FornecedoresController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,6 +20,7 @@ class FornecedoresController extends Controller
     public function index()
     {
         //
+        Gate::authorize("administrador");
         $fornecedores=Fornecedor::orderBy('razao_social')->paginate(5);
         return view('fornecedor.index', compact('fornecedores'));
     }
@@ -28,6 +33,7 @@ class FornecedoresController extends Controller
     public function create()
     {
         //
+        Gate::authorize("administrador");
         return view('fornecedor.create');
     }
 
@@ -39,6 +45,7 @@ class FornecedoresController extends Controller
      */
     public function store(Request $request)
     {
+        Gate::authorize("administrador");
         try {
             $fornecedor = new Fornecedor();
             $dados = $request->only($fornecedor->getFillable());
@@ -60,6 +67,7 @@ class FornecedoresController extends Controller
     public function show($id)
     {
         //
+        Gate::authorize("administrador");
         $fornecedor = Fornecedor::findOrFail($id);
         return view('fornecedor.show', compact('fornecedor'));
     }
@@ -73,6 +81,7 @@ class FornecedoresController extends Controller
     public function edit($id)
     {
         //
+        Gate::authorize("administrador");
         $fornecedor = Fornecedor::findOrFail($id);
         return view('fornecedor.edit', compact('fornecedor'));
     }
@@ -86,6 +95,7 @@ class FornecedoresController extends Controller
      */
     public function update(Request $request, $id)
     {
+        Gate::authorize("administrador");
         try{
             $produto = new Fornecedor();
             $dados = $request->only($produto->getFillable());
@@ -105,6 +115,7 @@ class FornecedoresController extends Controller
      */
     public function destroy($id)
     {
+        Gate::authorize("administrador");
         try{
             Fornecedor::destroy($id);
             return redirect()->action([FornecedoresController::class, 'index'])->with('sucesso', 'O fornecedor foi excluido com sucesso');

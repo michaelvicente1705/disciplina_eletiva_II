@@ -49,8 +49,8 @@
                             </caption>
                             <thead>
                             <tr>
-                                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-lg leading-4 text-black-500 tracking-wider">Descrição</th>
-                                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-lg leading-4 text-black-500 tracking-wider">Ações</th>
+                                <th class="px-6 py-3  w-1/2 border-b-2 border-gray-300 text-left text-lg leading-4 text-black-500 tracking-wider">Descrição</th>
+                                <th class="px-6 py-3  w-1/2 border-b-2 border-gray-300 text-left text-lg leading-4 text-black-500 tracking-wider">Ações</th>
                             </tr>
                             </thead>
 
@@ -58,7 +58,7 @@
                             <br>
                             @foreach($categoria as $c)
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-no-wrap border-b text-gray-900 border-gray-500 text-sm leading-5">{{$c->descricao}}</td>
+                                    <td class="px-6 py-4 truncate whitespace-no-wrap border-b text-gray-900 border-gray-500 text-sm leading-5">{{$c->descricao}}</td>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b t border-gray-500 text-sm leading-5 text-left ">
                                         <a class="px-5 py-2 border-blue-500 border align-middle  text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none" href="{{route('categoria.edit', $c->id)}}"><i class="far fa-edit"></i> Alterar</a>
                                         <a class="px-5 py-2 border-red-500 border  align-middle left text-red-500 rounded transition duration-300 hover:bg-red-700 hover:text-white focus:outline-none" href="{{ route('categorias.delete', $c->id)}}" ><i class="far fa-trash-alt"></i> Excluir</a>

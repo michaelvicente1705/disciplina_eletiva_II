@@ -52,13 +52,13 @@
                                 {{ $produtos->appends(['filtro' => isset($filtro) ? $filtro : '', 'pesquisa' => isset($pesquisa) ? $pesquisa : ''])->links() }}
                             </caption>
                             <thead>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-lg leading-4 text-black-500 tracking-wider">Nome</th>
-                            <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-lg leading-4 text-black-500 tracking-wider">Ações</th>
+                            <th class="px-6 py-3 w-1/2  border-b-2 truncate border-gray-300 text-left text-lg leading-4 text-black-500 tracking-wider">Nome</th>
+                            <th class="px-6 py-3 w-1/2 truncate border-b-2 truncate border-gray-300 text-left text-lg leading-4 text-black-500 tracking-wider">Ações</th>
                             </thead>
                             <tr><td></td></tr>
                             @foreach($produtos as $produto)
                                 <tr>
-                                    <td>{{$produto->nome}}</td>
+                                    <td class="">{{$produto->nome}}</td>
                                     <td class="py-4">
                                         <a class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none" href="{{route('produto.edit', $produto->id)}}"><i class="far fa-edit"></i> Alterar</a>
                                         <a class="px-5 py-2 border-yellow-500 border text-yellow-500 rounded transition duration-300 hover:bg-yellow-700 hover:text-white focus:outline-none" href="{{route('produto.show', $produto->id)}}" ><i class="far fa-eye"></i> Visualizar</a>

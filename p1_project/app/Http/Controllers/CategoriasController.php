@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class CategoriasController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +19,8 @@ class CategoriasController extends Controller
      */
     public function index()
     {
+        Gate::authorize("administrador");
+        $users=Auth::user();
         //
         $categoria= Categoria::orderBy('descricao')->paginate(5);
         return view('categoria.index', compact('categoria'));
@@ -27,6 +34,7 @@ class CategoriasController extends Controller
     public function create()
     {
         //
+        Gate::authorize("administrador");
         return view('categoria.create');
     }
 
@@ -39,6 +47,7 @@ class CategoriasController extends Controller
     public function store(Request $request)
     {
         //
+        Gate::authorize("administrador");
         try{
             $categoria = new Categoria();
             $dados = $request->only($categoria->getFillable());
@@ -70,6 +79,7 @@ class CategoriasController extends Controller
     public function edit($id)
     {
         //
+        Gate::authorize("administrador");
         $categoria = Categoria::findOrFail($id);
         return view('categoria.edit', compact('categoria') );
     }
@@ -84,6 +94,7 @@ class CategoriasController extends Controller
     public function update(Request $request, $id)
     {
         //
+        Gate::authorize("administrador");
         try{
             $categoria = new Categoria();
             $dados = $request->only($categoria->getFillable());
@@ -104,6 +115,7 @@ class CategoriasController extends Controller
     public function destroy($id)
     {
         //
+        Gate::authorize("administrador");
         try{
             Categoria::destroy($id);
             return redirect()->action([CategoriasController::class, 'index'])->with('sucesso', 'Sucesso ao excluir o registro!');
@@ -112,6 +124,7 @@ class CategoriasController extends Controller
         }
     }
     public function search(Request $request){
+        Gate::authorize("administrador");
         $filtro = $request->query('filtro');
         $pesquisa = $request->query('pesquisa');
         $categoria = Categoria::where($filtro, 'like', '%'.$pesquisa.'%')->orderBy($filtro)->paginate(5);

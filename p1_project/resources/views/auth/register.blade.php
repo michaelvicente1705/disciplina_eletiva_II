@@ -45,7 +45,7 @@
                                 name="password_confirmation" required />
             </div>
             <!-- Select Permission -->
-            <div class="mt-4">
+            <div hidden class="mt-4">
                 <select name="permission_id"   class="block mt-1 w-full" id="role">
                     <option value="2">Cliente</option>
                 </select>

@@ -55,6 +55,11 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        if ($user->permissions[0]->id == 1){
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }
+        else{
+            return redirect('/areacliente');
+        }
     }
 }

@@ -34,6 +34,7 @@
                             </select>
                         </div>
 
+
                         <div>
                             <x-label for="descricao" :value="__('Descrição')" />
                             <x-input id="descricao" class="block mt-1 w-full" type="text" name="descricao" required autofocus />
@@ -41,6 +42,11 @@
                         <div>
                             <x-label for="valor" :value="__('Valor')" />
                             <x-input id="valor" class="block mt-1 w-full" type="text" name="valor" required autofocus />
+                        </div>
+                        <br>
+                        <div>
+                            <x-label for="foto" :value="__('Insira a foto do produto') "/>
+                            <x-input id="foto" name="foto"  required class="block mt-1 w-full" type="file" />
                         </div>
                         <br>
                         <div class="flex items-center justify-end mt-4">

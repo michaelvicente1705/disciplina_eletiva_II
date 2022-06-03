@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeCrontroller extends Controller
 {
@@ -15,9 +16,12 @@ class HomeCrontroller extends Controller
     public function index()
     {
         //
+        $user = Auth::user();
+
         $produto= Produto::all();
-        return view('produtos2', compact('produto'));
+        return view('produtos_index', compact('produto','user'));
     }
+
 
     /**
      * Show the form for creating a new resource.

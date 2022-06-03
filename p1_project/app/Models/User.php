@@ -17,6 +17,9 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    public function getUserByEmail($email){
+        return User::where('email', $email)->first();
+    }
     protected $fillable = [
         'name',
         'email',
